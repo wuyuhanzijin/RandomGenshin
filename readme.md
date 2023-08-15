@@ -5,6 +5,6 @@
 <script src="https://blog.linyun.link/RandomGenshin/script.js" charset="utf-8"></script>
 ```
 &nbsp;
-> [#IMPORTANCE]
+> [#IMPORTANT]
 > 本项目使用GPL-3.0开源协议
 > 本项目禁止商用等如何盈利活动
