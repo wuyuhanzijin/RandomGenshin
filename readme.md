@@ -1,5 +1,6 @@
 <title>随机显示原神名句</title>
 <script src="script.js"></script>
+
 &nbsp;
 &nbsp;
 ### 如何使用
