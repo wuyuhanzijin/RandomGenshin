@@ -1,8 +1,8 @@
 ### 如何使用
 在你的网站添加如下HTML代码
 ```html
-&lt;span id="ys"&gt;加载中...&lt;/span&gt;
-&lt;script src="https://ymh0000123.github.io/Genshin-Impact-Good-words-and-sentences/script.js" charset="utf-8"&gt;&lt;/script&gt;
+<span id="ys">加载中...</span>
+<script src="https://blog.linyun.link/RandomGenshin/script.js" charset="utf-8"></script>
 ```
 &nbsp;
 > [#IMPORTANCE]
