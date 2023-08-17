@@ -2,29 +2,529 @@
 <html lang="zh-CN">
   <head>
     <style>
-    .gradient-button-1{
-      position: relative;
-      z-index: 1;
-      display: inline-block;
-      padding: 20px 40px;
-      font-size: 1.6rem;
-      box-sizing: border-box;
-      background-color: #e7eef1;
-      color: orangered;
-      border:solid 10px transparent;
-      border-image: linear-gradient(to top right, orangered, yellow);
-      border-image-slice: 1;
-      border-radius: 10px;
-    /* }
-    .gradient-button-1:hover{
-      color: white;
-      background-image: linear-gradient(to top right, orangered, yellow);
-      border-radius: 10px;
-    
-      /* 或者 */
-    
-      /* border-image-slice: 1 fill; */
-    } */
+      @font-face {
+          font-family: "Segoe UI File";
+          src: url("./font/segoeui.ttf");
+      }
+      
+      @font-face {
+          font-family: "Segoe Fluent Icons File";
+          src: url("./font/SegoeIcons.ttf");
+      }
+      
+      * {
+          font-family: "Microsoft YaHei", 微软雅黑,"Segoe UI", "Segoe UI File", serif;
+      }
+      
+      .wui-button {
+          background-color: rgb(251, 251, 251);
+          border-top: 1px solid rgb(229, 229, 229);
+          border-left: 1px solid rgb(229, 229, 229);
+          border-right: 1px solid rgb(229, 229, 229);
+          border-bottom: 1.3px solid rgb(204, 204, 204);
+          box-shadow: 0 0 0 rgb(204, 204, 204);
+          outline: none;
+          color: #1a1a1a;
+          user-select: none;
+      }
+      
+      .wui-button:hover {
+          background-color: #F6F6F6;
+          /*transition: 0.2s;*/
+      }
+      
+      .wui-button:active {
+          border-bottom: 1px solid rgb(229, 229, 229);
+          color: #616161;
+          /*transition: 0.2s;*/
+      }
+      
+      .wui-button-small {
+          border-radius: 4px;
+          padding: 0 15px 0 15px;
+          height: 30px;
+          font-size: 14px
+      }
+      
+      .wui-button-small {
+          margin: 3px 3px;
+      }
+      
+      .wui-button-long {
+          border-radius: 4px;
+          margin: 3px 3px;
+          padding: 0 15px 0 15px;
+          width: 100%;
+          height: 30px;
+          font-size: 14px
+      }
+      
+      .wui-button-textarea {
+          border-radius: 4px;
+          margin: 3px 3px;
+          padding: 3px 15px 3px 15px;
+          font-size: 14px
+      }
+      
+      .wui-button-style {
+          background-color: #005fba;
+          border-top: 1px solid #146cbe;
+          border-left: 1px solid #146cbe;
+          border-right: 1px solid #146cbe;
+          border-bottom: 1px solid #0F4E89;
+          box-shadow: 0 0 0 #0F4E89;
+          outline: none;
+          color: #FFFFFF;
+          user-select: none;
+      }
+      
+      .wui-button-style:hover {
+          background-color: #196ec0;
+          /*transition: 0.2s;*/
+      
+      }
+      
+      .wui-button-style:active {
+          background: #3184ca;
+          color: #a8e0ff;
+          /*transition: 0.2s;*/
+      }
+      
+      .wui-button-hyperlink {
+          background-color: #FFFFFF;
+          border: none;
+          outline: none;
+          color: #003f95;
+          border-radius: 4px;
+          margin: 2.667px 2.5px;
+          padding: 0 15px 0 15px;
+          height: 30px;
+          font-size: 14px;
+          cursor: pointer;
+          user-select: none;
+      }
+      
+      .wui-button-hyperlink:hover {
+          background-color: rgba(0, 0, 0, 0.07);
+          transition: 0.1s;
+      }
+      
+      .wui-button-hyperlink:active {
+          background-color: rgba(0, 0, 0, 0.05);
+          color: #0067c0;
+          transition: 0.1s;
+      }
+      
+      .wui-button-hyperlink.disabled {
+          color: #ADADAD;
+          pointer-events: none;
+      }
+      
+      .wui-button.disabled {
+          background-color: #F5F5F5;
+          color: #9D9D9D;
+          pointer-events: none;
+          border-top: 1.34px solid #E5E5E5;
+          border-left: 1.34px solid #E5E5E5;
+          border-right: 1.34px solid #E5E5E5;
+          border-bottom: 1.34px solid #E5E5E5;
+      }
+      
+      .wui-button-check-box {
+          position: absolute;
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          cursor: pointer;
+          width: 22px;
+          height: 22px;
+          background: rgb(237, 237, 237);
+          border: 0.08rem solid rgb(133, 133, 133);
+          border-radius: 4px;
+      }
+      
+      
+      .wui-button-check-box:checked {
+          border: 0;
+          background: rgb(0, 95, 186);
+      }
+      
+      .wui-button-check-box:checked::after {
+          font-family: "Segoe Fluent Icons", "Segoe Fluent Icons File", serif;
+          content: '';
+          font-weight: 600;
+          color: #FFFFFF;
+          transform: scale(0.7);
+          height: 6px;
+          width: 10px;
+          top: 25%;
+          left: 20%;
+          border-top: none;
+          border-right: none;
+          position: absolute;
+          opacity: 1;
+          animation: wuibox 0.1s 1;
+      }
+      
+      .wui-button-check-box:checked:hover {
+          background: #196EC0;
+      }
+      
+      .wui-button-check-box:checked:active {
+          background: rgb(49, 125, 197);
+      }
+      
+      .wui-button-check-box:hover {
+          background: #E5E5E5;
+      }
+      
+      .wui-button-check-box:active {
+          border: 0.08rem solid rgb(196, 196, 196);
+          background: #3183ca;
+      }
+      
+      
+      
+      .wui-button-radio-box {
+          position: relative;
+          margin: 3px 3px;
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          cursor: pointer;
+          width: 20px;
+          height: 20px;
+          background: rgb(237, 237, 237);
+          border: 0.08rem solid rgb(133, 133, 133);
+          border-radius: 20px;
+      }
+      
+      
+      .wui-button-radio-box:checked {
+          border: 0;
+          background: rgb(0, 95, 186);
+      }
+      
+      .wui-button-radio-box:checked::after {
+          content: '';
+          background: #FFFFFF;
+          width: 12px;
+          height: 12px;
+          position: absolute;
+          top: 20%;
+          left: 20%;
+          border-radius: 50%;
+          animation: wuibox 0.1s 1;
+      }
+      
+      .wui-button-radio-box:checked:hover {
+          background: #196EC0;
+      }
+      
+      .wui-button-radio-box:checked:active {
+          background: rgb(49, 125, 197);
+      }
+      
+      .wui-button-radio-box:hover {
+          background: #E5E5E5;
+      }
+      
+      .wui-button-radio-box:active {
+          border: 0.08rem solid rgb(196, 196, 196);
+          background: rgb(220, 2);
+      }
+      
+      @keyframes wuibox {
+          0% {
+              opacity: 0;
+          }
+      
+          100% {
+              opacity: 1;
+          }
+      
+      }
+      
+      
+      .wui-button-switch {
+          margin: 3px 3px;
+          position: relative;
+          display: inline-block;
+          width: 42px;
+          height: 21px;
+      }
+      
+      .wui-button-switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+      
+      .wui-button-switch-slider:hover {
+          background: #E5E5E5;
+      }
+      
+      .wui-button-switch:active .wui-button-switch-slider:before {
+          width: 16px
+      }
+      
+      .wui-button-switch-slider:hover:before {
+      
+          height: 14.5px;
+          width: 14.5px;
+      
+      }
+      
+      .wui-button-switch-slider {
+          border: 0.08rem solid rgb(133, 133, 133);
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgb(237, 237, 237);
+          -webkit-transition: .2s;
+          transition: .2s;
+      }
+      
+      .wui-button-switch-slider:before {
+          position: absolute;
+          content: "";
+          height: 13px;
+          width: 13px;
+          left: 3px;
+          transform: translateY(-50%);
+          top: 50%;
+          background-color: #575757;
+          -webkit-transition: .2s;
+          transition: .2s;
+      
+      }
+      
+      input:checked+.wui-button-switch-slider {
+          border: 0;
+          background-color: rgb(0, 95, 186);
+      }
+      
+      input:checked:hover+.wui-button-switch-slider {
+          background-color: #196EC0;
+      }
+      
+      input:hover+.wui-button-switch-slider {
+          background-color: #E5E5E5
+      }
+      
+      input:checked+.wui-button-switch-slider:before {
+          position: absolute;
+          transform: translateY(-50%);
+          left: 24px;
+          top: 50%;
+          background-color: #FFFFFF;
+      }
+      
+      
+      .wui-button-switch-slider {
+          border-radius: 34px;
+      }
+      
+      .wui-button-switch-slider:before {
+          border-radius: 50%;
+      }
+      
+      .wui-button-toggle {
+      
+          position: relative;
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          border-radius: 4px;
+          height: 30px;
+          width: var(--width);
+          color: #1A1A1A;
+          font-size: 14px;
+          margin: 3px 3px;
+      }
+      
+      .wui-button-toggle:checked {
+          color: #FFFFFF;
+          background-color: #005fba;
+          border: 0;
+      }
+      
+      .wui-button-toggle:before {
+          line-height: 12px;
+          position: absolute;
+          content: attr(value);
+          height: 13px;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          top: 50%;
+      }
+      
+      .wui-button-toggle:checked:hover {
+          background-color: #196ec0;
+          /*transition: 0.2s;*/
+      
+      }
+      
+      .wui-button-toggle.wui-button:checked:hover {
+          background-color: #196ec0;
+          /*transition: 0.2s;*/
+      
+      }
+      
+      .wui-button-toggle.wui-button:checked:active {
+          background: #3184ca;
+          color: #a8e0ff;
+          /*transition: 0.2s;*/
+      
+      }
+      
+      
+      .wui-icon {
+          font-family: "Segoe Fluent Icons", "Segoe Fluent Icons File", serif;
+      }
+      
+      .wui-list-select {
+      
+          font-family: "Microsoft YaHei" ,"Segoe UI", "Segoe UI File", serif;
+          display: inline-block;
+          background-color: rgb(251, 251, 251);
+          border-top: 1px solid rgb(229, 229, 229);
+          border-left: 1px solid rgb(229, 229, 229);
+          border-right: 1px solid rgb(229, 229, 229);
+          border-bottom: 1.3px solid rgb(204, 204, 204);
+          box-shadow: 0 0 0 rgb(204, 204, 204);
+          outline: none;
+          color: #1a1a1a;
+          user-select: none;
+          border-radius: 4px;
+      
+          height: 30px;
+          font-size: 14px;
+          margin: 3px 3px;
+      }
+      
+      .wui-list-select:hover,
+      .wui-list-select select option {
+          background-color: #F6F6F6;
+          /*transition: 0.2s;*/
+      }
+      
+      .wui-list-select:active {
+          border-bottom: 1px solid rgb(229, 229, 229);
+          color: #616161;
+          /*transition: 0.2s;*/
+      }
+      
+      .wui-list-select:before {
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          font-family: "Segoe Fluent Icons", "Segoe Fluent Icons File", serif;
+          content: "";
+          position: relative;
+          width: 0;
+          height: 0;
+      
+          border-top-color: #000;
+          left: 77%;
+          transform: translate(-50%, -50%);
+          top: 25%;
+          cursor: pointer;
+      
+      }
+      
+      .wui-list-select select {
+          font-family: "Microsoft YaHei" ,"Segoe UI", "Segoe UI File", serif;
+          cursor: pointer;
+          position: relative;
+          left: 45%;
+          transform: translate(-50%, -50%);
+          top: -13%;
+          width: 100%;
+          padding: 0 15px 0 15px;
+          height: 100%;
+          border: none;
+          background: transparent;
+          background-image: none;
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+      }
+      
+      .wui-list-select select:focus {
+          outline: none;
+      }
+      
+      .wui-list-select select option {
+          font-family: "Microsoft YaHei" ,"Segoe UI", "Segoe UI File", serif;
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+      }
+      
+      ul,
+      ol,
+      li {
+          font-family: "Microsoft YaHei" ,"Segoe UI", "Segoe UI File", serif;
+          margin: 0px;
+          padding: 0px;
+      }
+      
+      .wui-list {
+          position: relative;
+          background-color: rgb(243,243,243);
+          list-style-type: none;
+          width: fit-content;
+          border-radius: 4px;
+          margin: 2px;
+          padding: 3px 5px 3px 5px ;
+          font-size: 14px
+      }
+      
+      .wui-list li{
+          position: relative;
+          border-radius: 5px;
+          padding: 10px 15px 10px 15px;
+          font-size: 14px
+      }
+      
+      .wui-list li:hover {
+          background-color: #EAEAEA;
+      }
+      
+      .wui-list-click li:focus {
+          background-color: #EDEDED;
+      }
+      @keyframes wuicenter {
+          0% {
+              height:5px
+          }
+      
+          100% {
+              height: 20px;
+          }
+      
+      }
+      
+      .wui-list-click li:focus::before{
+          position: absolute;
+          content: "";
+          height: 20px;
+          border-radius: 4px;
+          width: 4px;
+          top:50%;
+          transform: translateY(-50%);
+          left:-1.5px;
+          background-color: #005FBA;
+          animation: wuicenter 0.3s 1;
+      
+      }
+      .wui-icon {
+          font-family: "Segoe Fluent Icons", "Segoe Fluent Icons File", serif ;
+      }
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,7 +576,7 @@
 <div class="markdown-alert markdown-alert-warning" dir="auto"><p dir="auto"><span class="color-fg-attention text-semibold d-inline-flex flex-items-center mb-1"><svg class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</span></p><p dir="auto">本项目使用GPL-3.0开源协议</p></div>
 
 <div style="text-align:center;">
-<button class="gradient-button-1" onclick="location.reload()">换一句</button>
+<button class="wui-button" onclick="location.reload()">换一句</button>
 </div>      
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
