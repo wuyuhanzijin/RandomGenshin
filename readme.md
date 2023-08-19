@@ -2,7 +2,7 @@
 在你的网站添加如下HTML代码
 ```html
 <span id="ys">加载中...</span>
-<script src="https://blog.linyun.link/RandomGenshin/script.js" charset="utf-8"></script>
+<script src="https://blog.linyun.link/api/v1/rg/script.js" charset="utf-8"></script>
 ```
 &nbsp;
 > [!WARNING]
