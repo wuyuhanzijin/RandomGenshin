@@ -104,7 +104,7 @@ function random() {
 	"只要前进，便会有所失去。",
 	"那么，趁着一切还美好，就这样静止吧……去往永恒。",
 	"你想知道夜晚流星的真相吗？哈哈，真相就是缥缈须臾的一瞬天光罢了。",
-	"徒然无事，对砚枯坐"
+	"徒然无事，对砚枯坐。"
     ];
 
     var randomNumber = Math.floor(Math.random() * texts.length);
